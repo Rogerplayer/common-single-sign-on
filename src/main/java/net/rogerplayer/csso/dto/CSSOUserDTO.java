@@ -7,7 +7,7 @@ import lombok.Data;
 public @Data class CSSOUserDTO {
 
 	private Long id;
-	private String user;
+	private String username;
 	private String password;
 	private String email;
 	private String nome;

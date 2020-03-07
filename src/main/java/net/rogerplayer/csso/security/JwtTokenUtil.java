@@ -6,7 +6,7 @@ import java.util.function.Function;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-
+	
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -53,10 +53,10 @@ private static final long serialVersionUID = 1L;
     }
 
     private String doGenerateToken(CSSOUser  cssoUser) {
-    	CSSOUserDTO cssoUserDTO = CSSOUserDTO.builder().user(cssoUser.getUser()).password(cssoUser.getPassword())
+    	CSSOUserDTO cssoUserDTO = CSSOUserDTO.builder().username(cssoUser.getUsername()).password(cssoUser.getPassword())
                 .build();
       
-        Claims claims = Jwts.claims().setSubject( cssoUser.getUser());
+        Claims claims = Jwts.claims().setSubject( cssoUser.getUsername());
         claims.put("scopes", cssoUserDTO);
 
         return Jwts.builder()
