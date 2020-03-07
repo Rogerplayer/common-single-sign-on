@@ -3,6 +3,7 @@ package net.rogerplayer.csso.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -11,6 +12,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import net.rogerplayer.csso.domain.CSSOUser;
+import net.rogerplayer.csso.dto.CSSOUserDTO;
 import net.rogerplayer.csso.repositories.CSSOUserRepository;
 import net.rogerplayer.csso.services.exceptions.DataIntegrityException;
 import net.rogerplayer.csso.services.exceptions.ObjectNotFoundException;
@@ -61,16 +63,16 @@ public class CSSOUserService {
 		return cssoUserRepository.findAll(pageRequest);
 	}
 
-//	public CSSOUserDTO toDTO(CSSOUser evento) {
-//		CSSOUserDTO dto = new CSSOUserDTO();
-//		BeanUtils.copyProperties(evento, dto);
-//		return dto;
-//	}
-//
-//	public CSSOUser fromDTO(CSSOUserDTO dto) {
-//		CSSOUser evento = new CSSOUser();
-//		BeanUtils.copyProperties(dto, evento);
-//		return evento;
-//	}
+	public CSSOUserDTO toDTO(CSSOUser cssoUser) {
+		CSSOUserDTO dto = new CSSOUserDTO();
+		BeanUtils.copyProperties(cssoUser, dto);
+		return dto;
+	}
+
+	public CSSOUser fromDTO(CSSOUserDTO dto) {
+		CSSOUser cssoUser = new CSSOUser();
+		BeanUtils.copyProperties(dto, cssoUser);
+		return cssoUser;
+	}
 
 }
